@@ -9,9 +9,9 @@ var socket = io();
 	});
 
 	socket.on('newMessage',function(message){
-		console.log('newMessage',message);
+		var formattedTime = moment(message.createdAt).format('h:mm a');
 		var li = jQuery('<li></li>');
-		li.text(`${message.from}: ${message.text}`);
+		li.text(`${message.from} ${formattedTime}: ${message.text}`);
 
 		jQuery('#messages').append(li);
 	});
